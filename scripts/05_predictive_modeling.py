@@ -35,6 +35,7 @@ def save_results(results: dict, out_dir: str):
     best = max(results.items(), key=lambda kv: kv[1]['r2'])
     best_name, best_model = best[0], best[1]['model']
     joblib.dump(best_model, f"{out_dir}/{best_name}_model.pkl")
+    
     if best_name == 'RandomForest':
         import numpy as np
         feat_imp = pd.DataFrame({

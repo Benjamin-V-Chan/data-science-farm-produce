@@ -86,3 +86,8 @@ All outputs will be saved under the `outputs/` directory.
 * scikit-learn
 * joblib
 
+## Acknowledgments
+
+* **dataset name:** Farm Produce Data | 80 years
+* **dataset author:** Aradhana Hirapara
+* **dataset source:** [https://www.kaggle.com/datasets/aradhanahirapara/farm-produce-data-80-years](https://www.kaggle.com/datasets/aradhanahirapara/farm-produce-data-80-years)

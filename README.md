@@ -76,3 +76,13 @@ project-root/
 
 All outputs will be saved under the `outputs/` directory.
 
+## Requirements
+
+* Python 3.7+
+* pandas
+* numpy
+* matplotlib
+* statsmodels
+* scikit-learn
+* joblib
+

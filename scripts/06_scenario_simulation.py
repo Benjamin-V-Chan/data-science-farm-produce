@@ -11,6 +11,7 @@ def simulate_group(df: pd.DataFrame, n_sim: int=1000):
     mu_p, sd_p = df['average_farm_price'].mean(), df['average_farm_price'].std()
     area = df['seeded_area_hectares'].iloc[-1]
     sims = []
+    
     for i in range(n_sim):
         y_samp = np.random.normal(mu_y, sd_y)
         p_samp = np.random.normal(mu_p, sd_p)
@@ -26,6 +27,7 @@ def run_simulations(df: pd.DataFrame, out_dir: str):
         dir_proc = Path(out_dir)/prov
         dir_proc.mkdir(parents=True, exist_ok=True)
         sims.to_csv(dir_proc/f"{crop}_simulation.csv", index=False)
+        
         plt.hist(sims['sim_value'], bins=50)
         plt.title(f"Value Distribution: {prov} - {crop}")
         plt.savefig(dir_proc/f"{crop}_value_dist.png")

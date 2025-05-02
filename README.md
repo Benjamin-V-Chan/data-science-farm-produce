@@ -76,3 +76,18 @@ project-root/
 
 All outputs will be saved under the `outputs/` directory.
 
+## Requirements
+
+* Python 3.7+
+* pandas
+* numpy
+* matplotlib
+* statsmodels
+* scikit-learn
+* joblib
+
+## Acknowledgments
+
+* **dataset name:** Farm Produce Data | 80 years
+* **dataset author:** Aradhana Hirapara
+* **dataset source:** [https://www.kaggle.com/datasets/aradhanahirapara/farm-produce-data-80-years](https://www.kaggle.com/datasets/aradhanahirapara/farm-produce-data-80-years)

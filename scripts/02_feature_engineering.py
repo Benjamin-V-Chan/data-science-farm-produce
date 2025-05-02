@@ -4,14 +4,17 @@ from pathlib import Path
 def load_processed(path: str) -> pd.DataFrame:
     return pd.read_csv(path, parse_dates=['ref_date'])
 
-def engineer_features(df: pd.DataFrame) -> (pd.DataFrame, pd.Series):
+def engineer_features(df: pd.DataFrame):
     df = df.sort_values(['geo', 'crop', 'ref_date'])
+    
     # Year-over-year pct changes
     df['pct_change_price']      = df.groupby(['geo','crop'])['average_farm_price'].pct_change().fillna(0)
     df['pct_change_yield']      = df.groupby(['geo','crop'])['average_yield'].pct_change().fillna(0)
     df['pct_change_production'] = df.groupby(['geo','crop'])['total_production'].pct_change().fillna(0)
+    
     # One-hot encode categorical
     df = pd.get_dummies(df, columns=['geo','crop'], drop_first=True)
+    
     # Features / target
     X = df.drop(columns=['total_farm_value','ref_date'])
     y = df['total_farm_value']

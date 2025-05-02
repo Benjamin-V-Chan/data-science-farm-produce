@@ -8,10 +8,12 @@ def load_raw(path: str) -> pd.DataFrame:
 def clean_df(df: pd.DataFrame) -> pd.DataFrame:
     df = df.rename(columns=lambda x: x.strip().lower().replace(' ', '_'))
     df['ref_date'] = pd.to_datetime(df['ref_date'], format='%Y')
+    
     # Impute numeric missing with median
     nums = df.select_dtypes(include='number').columns
     for col in nums:
         df[col] = df[col].fillna(df[col].median())
+        
     # Derived features
     df['production_per_ha'] = df['total_production'] / df['seeded_area_hectares']
     df['value_per_tonne']   = df['total_farm_value'] / df['total_production']

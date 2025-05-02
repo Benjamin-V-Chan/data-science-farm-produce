@@ -1,5 +1,4 @@
 import pandas as pd
-import numpy as np
 from statsmodels.tsa.holtwinters import ExponentialSmoothing
 import matplotlib.pyplot as plt
 from pathlib import Path
@@ -22,6 +21,7 @@ def run_forecasts(df: pd.DataFrame, out_csv: str, figs_dir: str):
         fcast = forecast_group(group)
         for year, val in fcast.items():
             records.append({'geo':prov, 'crop':crop, 'year':year.year, 'forecast_production':val})
+            
         # plot
         plt.plot(ts.index, ts['y'], label='history')
         plt.plot(fcast.index, fcast.values, label='forecast')
